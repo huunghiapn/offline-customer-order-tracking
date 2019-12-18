@@ -1,0 +1,142 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Offline Customer's Order Tracking\n"
+"POT-Creation-Date: 2019-12-18 13:19+0700\n"
+"PO-Revision-Date: 2019-12-18 13:19+0700\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: offline-customer-order-tracking.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: offline-customer-order-tracking.php:58
+msgid ""
+"Offline Customer's Order Tracking is not running because ACF is not active. "
+"Please activate both plugins."
+msgstr ""
+"Theo dõi đơn hàng của khách hàng ngoại tuyến không chạy vì ACF không hoạt "
+"động. Vui lòng kích hoạt cả hai plugin."
+
+#: offline-customer-order-tracking.php:166
+#: offline-customer-order-tracking.php:167
+#: offline-customer-order-tracking.php:168
+#: offline-customer-order-tracking.php:176
+msgid "Offline Customer's Order"
+msgstr "Đơn hàng offline"
+
+#: offline-customer-order-tracking.php:169
+msgid "All Order"
+msgstr "Tất cả các đơn"
+
+#: offline-customer-order-tracking.php:170
+#: offline-customer-order-tracking.php:171
+msgid "Add Order"
+msgstr "Thêm đơn"
+
+#: offline-customer-order-tracking.php:172
+msgid "Edit Order"
+msgstr "Chỉnh sửa đơn hàng"
+
+#: offline-customer-order-tracking.php:210
+msgid "Order Information"
+msgstr "Thông tin đơn hàng"
+
+#: offline-customer-order-tracking.php:214
+#: offline-customer-order-tracking.php:468
+msgid "Order No"
+msgstr "Mã đơn"
+
+#: offline-customer-order-tracking.php:228
+#: offline-customer-order-tracking.php:469
+msgid "Customer's Name"
+msgstr "Tên Khách"
+
+#: offline-customer-order-tracking.php:247
+#: offline-customer-order-tracking.php:422
+msgid "Customer's phone"
+msgstr "SDT Khách"
+
+#: offline-customer-order-tracking.php:266
+msgid "Customer's Address"
+msgstr "Địa chỉ"
+
+#: offline-customer-order-tracking.php:285
+msgid "Purchases Date"
+msgstr "Ngày mua"
+
+#: offline-customer-order-tracking.php:302
+msgid "Products"
+msgstr "Sản phẩm"
+
+#: offline-customer-order-tracking.php:324
+msgid "Total"
+msgstr "Tổng"
+
+#: offline-customer-order-tracking.php:345
+msgid "Notes"
+msgstr "Ghi chú"
+
+#: offline-customer-order-tracking.php:364
+msgid "Export"
+msgstr "Xuất"
+
+#: offline-customer-order-tracking.php:375
+msgid "Print Order"
+msgstr "In hóa đơn"
+
+#: offline-customer-order-tracking.php:420
+msgid "Customer's name"
+msgstr "Tên Khách"
+
+#: offline-customer-order-tracking.php:470
+msgid "Customer' Phone"
+msgstr "SDT Khách"
+
+#: offline-customer-order-tracking.php:471
+msgid "Created Date"
+msgstr "Ngày tạo"
+
+#: offline-customer-order-tracking.php:507
+msgid "Settings"
+msgstr "Cấu hình"
+
+#. Plugin Name of the plugin/theme
+msgid "Offline Customer's Order Tracking"
+msgstr "Theo dõi đơn hàng của khách hàng ngoại tuyến"
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/huunghiapn/offline-customer-order-tracking"
+msgstr "https://github.com/huunghiapn/offline-customer-order-tracking"
+
+#. Description of the plugin/theme
+msgid ""
+"\"Offline Customer's Order Tracking\" provides the simplest way to manage "
+"store-based purchases. Create/Edit/Delete/Search customer's order"
+msgstr ""
+"\"Theo dõi đơn hàng của khách hàng ngoại tuyến\" cung cấp cách đơn giản nhất "
+"để quản lý mua hàng dựa trên cửa hàng. Tạo / Chỉnh sửa / Xóa / Tìm kiếm đơn "
+"hàng của khách hàng"
+
+#. Author of the plugin/theme
+msgid "NghiaNH"
+msgstr "NghiaNH"
+
+#. Author URI of the plugin/theme
+msgid "https://profiles.wordpress.org/nghianh/"
+msgstr "https://profiles.wordpress.org/nghianh/"
+
+#, php-format
+#~ msgid "%s value is required"
+#~ msgstr "%s giá trị bắt buộc nhập"
