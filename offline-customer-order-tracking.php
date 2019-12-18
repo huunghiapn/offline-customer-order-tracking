@@ -151,7 +151,6 @@ class OfflineOrder
     // Include field type for ACF5
     public function include_field_types_unique_id($version)
     {
-        print(MY_OCOT_PATH . 'inc/acf-unique_id-v5.php');
         include_once(MY_OCOT_PATH . 'inc/acf-unique_id-v5.php');
     }
 
