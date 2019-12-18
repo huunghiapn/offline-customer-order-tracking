@@ -49,8 +49,31 @@ class OfflineOrder
     {
         add_action('init', array($this, 'init'));
 
+        // Customize the url setting to fix incorrect asset URLs.
+        add_filter('acf/settings/url', array($this, 'my_acf_settings_url'));
+
+        // (Optional) Hide the ACF admin menu item.
+        add_filter('acf/settings/show_admin', array( $this, 'my_acf_settings_show_admin'));
+
 
         add_action('acf/include_field_types', array($this, 'include_field_types_unique_id'));
+
+        // remove Yoast SEO
+        add_action('add_meta_boxes', array($this, 'ocot_remove_wp_seo_meta_box'), 100);
+
+        //Admin Filter BY Custom Fields
+        add_action('restrict_manage_posts', array($this, 'ocot_admin_posts_filter_restrict_manage_posts'));
+        add_filter('parse_query', array($this, 'ocot_posts_filter'));
+
+        // Add the custom columns to the ocot post type:
+        add_filter('manage_offline_order_posts_columns', array($this, 'set_custom_edit_offline_order_columns'), 10, 2);
+
+        // Add the data to the custom columns for the book post type:
+        add_action('manage_offline_order_posts_custom_column', array($this, 'custom_offline_order_column'), 10, 2);
+
+        // add js to edit page
+        add_action('admin_print_scripts-post-new.php', array($this, 'ocot_admin_script'), 11);
+        add_action('admin_print_scripts-post.php', array($this, 'ocot_admin_script'), 11);
     }
 
     /**
@@ -100,34 +123,11 @@ class OfflineOrder
     public function main()
     {
 
-        // Customize the url setting to fix incorrect asset URLs.
-        add_filter('acf/settings/url', array($this, 'my_acf_settings_url'));
-
-        // (Optional) Hide the ACF admin menu item.
-        add_filter('acf/settings/show_admin', array( $this, 'my_acf_settings_show_admin'));
-
         // Register custom post type
         $this->ocot_register_my_cpts();
 
         // Register order's field
         $this->add_local_field_group();
-
-        // remove Yoast SEO
-        add_action('add_meta_boxes', array($this, 'ocot_remove_wp_seo_meta_box'), 100);
-
-        //Admin Filter BY Custom Fields
-        add_action('restrict_manage_posts', array($this, 'ocot_admin_posts_filter_restrict_manage_posts'));
-        add_filter('parse_query', array($this, 'ocot_posts_filter'));
-
-        // Add the custom columns to the ocot post type:
-        add_filter('manage_ocot_posts_columns', array($this, 'set_custom_edit_ocot_columns'), 10, 2);
-
-        // Add the data to the custom columns for the book post type:
-        add_action('manage_ocot_posts_custom_column', array($this, 'custom_ocot_column'), 10, 2);
-
-        // add js to edit page
-        add_action('admin_print_scripts-post-new.php', array($this, 'ocot_admin_script'), 11);
-        add_action('admin_print_scripts-post.php', array($this, 'ocot_admin_script'), 11);
     }
     //****************************************************************************
     //* Functions section
@@ -454,12 +454,11 @@ class OfflineOrder
                     'compare' => 'LIKE'
                 ));
             }
-            $meta_query = new WP_Meta_Query($meta_query_args);
             $query->query_vars['meta_query'] = $meta_query_args;
         }
     }
 
-    public function set_custom_edit_ocot_columns($columns)
+    public function set_custom_edit_offline_order_columns($columns)
     {
         unset($columns['title']);
 
@@ -471,7 +470,7 @@ class OfflineOrder
         return $new_columns;
     }
 
-    public function custom_ocot_column($column, $post_id)
+    public function custom_offline_order_column($column, $post_id)
     {
         switch ($column) {
             case 'order_id':
@@ -490,7 +489,7 @@ class OfflineOrder
     public function ocot_admin_script()
     {
         global $post_type;
-        if ('ocot' == $post_type)
+        if ('offline_order' == $post_type)
             wp_enqueue_script('ocot-admin-script', MY_OCOT_URL . 'js/main.js');
     }
 
@@ -503,7 +502,7 @@ class OfflineOrder
      */
     public function add_settings_link($links)
     {
-        $settings = array('<a href="' . admin_url('admin.php?page=ocot') . '">' . __('Settings', 'ocot') . '</a>');
+        $settings = array('<a href="' . admin_url('admin.php?page=offline_order') . '">' . __('Settings', 'ocot') . '</a>');
         $links = array_reverse(array_merge($links, $settings));
 
         return $links;
