@@ -53,7 +53,7 @@ class OfflineOrder
         add_filter('acf/settings/url', array($this, 'my_acf_settings_url'));
 
         // (Optional) Hide the ACF admin menu item.
-        add_filter('acf/settings/show_admin', array( $this, 'my_acf_settings_show_admin'));
+        add_filter('acf/settings/show_admin', array($this, 'my_acf_settings_show_admin'));
 
 
         add_action('acf/include_field_types', array($this, 'include_field_types_unique_id'));
@@ -74,6 +74,11 @@ class OfflineOrder
         // add js to edit page
         add_action('admin_print_scripts-post-new.php', array($this, 'ocot_admin_script'), 11);
         add_action('admin_print_scripts-post.php', array($this, 'ocot_admin_script'), 11);
+
+        /* Filter the single_template with our custom function*/
+        add_filter('single_template', array($this, 'ocot_single_template'));
+
+        add_action('save_post', array($this, 'ocot_post_type_title'));
     }
 
     /**
@@ -493,6 +498,32 @@ class OfflineOrder
             wp_enqueue_script('ocot-admin-script', MY_OCOT_URL . 'js/main.js');
     }
 
+    /** Register ocot template
+     * @param $template
+     * @return string
+     */
+    public function ocot_single_template($template)
+    {
+        global $post;
+        if ('offline_order' == $post->post_type) {
+            $template = MY_OCOT_PATH . 'templates/single-offline_order.php';
+        }
+        return $template;
+    }
+
+    /**
+     * Update post name by order_id
+     * @param $post_id
+     */
+    public function ocot_post_type_title($post_id)
+    {
+        global $wpdb;
+        if (get_post_type($post_id) == 'offline_order') {
+            // Update the post into the database
+            $where = array('ID' => $post_id);
+            $wpdb->update($wpdb->posts, array('post_title' => get_field("order_id", $post_id), 'post_name' => get_field("order_id", $post_id)), $where);
+        }
+    }
 
     /**
      * Add "Settings" link in the Plugins list page when the plugin is active
